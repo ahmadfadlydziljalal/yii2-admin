@@ -127,7 +127,8 @@ class AccessControl extends \yii\base\ActionFilter
 
         foreach ($this->allowActions as $route) {
             if (substr($route, -1) === '*') {
-                $route = rtrim((string)$route, "*");
+                $route = (string) $route;
+                $route = rtrim($route, "*");
                 if ($route === '' || strpos($id, $route) === 0) {
                     return false;
                 }
